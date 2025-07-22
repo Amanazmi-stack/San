@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boy Girl Question</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .emojis {
+            font-size: 100px;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #formContainer {
+            display: none;
+            margin-top: 20px;
+        }
+        #formContainer input {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #formContainer button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #message {
+            display: none;
+            font-size: 18px;
+            color: #ff4444;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="emojis">👦 ❓ 👧</div>
+    <div class="question">Kya tum meri GF banogi?</div>
+    <div class="buttons">
+        <button onclick="showForm()">Yes</button>
+        <button onclick="showMessage()">No</button>
+    </div>
+    <div id="formContainer">
+        <form method="POST" action="https://formspree.io/f/mrblpbvl" onsubmit="handleSubmit(event)">
+            <input type="text" name="reply" id="inputText" placeholder="Type 'Ha' here" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="message">Dubara pareshan nhi karunga bye !</div>
+
+    <script>
+        function showForm() {
+            document.getElementById('formContainer').style.display = 'block';
+            document.getElementById('message').style.display = 'none';
+            document.querySelector('.buttons').style.display = 'none';
+        }
+
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('formContainer').style.display = 'none';
+            document.querySelector('.buttons').style.display = 'none';
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById('inputText').value.trim();
+            if (input.toLowerCase() === 'ha') {
+                alert('Yay! Tum meri GF ban gayi! 😊');
+            } else {
+                alert('Please type "Ha" to confirm!');
+            }
+        }
+    </script>
+</body>
+</html>
